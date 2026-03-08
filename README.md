@@ -1,2 +1,2 @@
 # Diggy-Diggy-Hole
-A uploaded game
+A game about a dwarf, who mines stones to get gold and buy upgrades.

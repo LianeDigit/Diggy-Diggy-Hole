@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 public class horsti : MonoBehaviour
 {
+    public GameObject picksymb;
+    public GameObject dynsymb;
+    public GameObject hacke;
     public GameObject youwon;
     public player player;
     public managbor borer;
@@ -31,11 +34,11 @@ public class horsti : MonoBehaviour
     {
         if (active == true){
             preistext.text = preis.ToString();
-            borecounter.text = borerupgrades.ToString();
-            dyncounter.text = dynagrades.ToString();
-            axecounter.text = hackgrades.ToString();
         }
-        if (borerupgrades ==3 && hackgrades == 3 && dynagrades == 3)
+        borecounter.text = borerupgrades.ToString();
+        dyncounter.text = dynagrades.ToString();
+        axecounter.text = hackgrades.ToString();
+        if (borerupgrades ==5 && hackgrades == 5 && dynagrades == 5)
         {
             youwon.SetActive(true);
         }
@@ -55,34 +58,40 @@ public class horsti : MonoBehaviour
     }
     public void upgradebohrer()
     {
-        if (player.gold > preis && borerupgrades < 3)
+        if (player.gold > preis && borerupgrades < 5)
         {
             player.gold -= preis;
             borerupgrades += 1;
             borer.damage = borer.damage*1.5f;
-            preis = preis * 1.25f;
+            preis = Mathf.RoundToInt(preis * 1.25f);
         }
     }
     public void hackergrade()
     {
-        if (player.gold > preis && hackgrades < 3)
+        if (player.gold > preis && hackgrades < 5)
         {
+            Instantiate(hacke, sator.gameObject.transform.position, sator.gameObject.transform.rotation, sator.gameObject.transform.parent);
             player.gold -= preis;
             hackgrades += 1;
             sator.damage = sator.damage * 1.25f;
             sator.rotatetime = sator.rotatetime * 1.25f;
-            preis = preis* 1.25f;
+            preis = Mathf.RoundToInt(preis* 1.25f);
+            picksymb.SetActive(true);
         }
     }
     public void dynagrade()
     {
-        if(player.gold > preis && dynagrades < 3)
+        
+        if(player.gold > preis && dynagrades < 5)
         {
+            dyns.darf = true;
             player.gold -= preis;
             dynagrades += 1;
             dyns.damage = dyns.damage * 1.5f;
             dyns.weiter -= 1;
-            preis = preis * 1.25f;
+            preis = Mathf.RoundToInt(preis * 1.25f);
+            dynsymb.SetActive(true);
         }
     }
+    
 }

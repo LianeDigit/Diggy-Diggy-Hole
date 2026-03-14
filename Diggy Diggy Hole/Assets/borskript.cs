@@ -8,7 +8,7 @@ public class borskript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        deineMudda = this.transform.parent.gameObject.GetComponent<managbor>();
     }
 
     // Update is called once per frame

@@ -11,10 +11,11 @@ public class dynamight : MonoBehaviour
     public float timer;
     public float weiter;
     public int kann;
+    public bool darf;
     // Start is called before the first frame update
     void Start()
     {
-        
+        darf = false;
     }
 
     // Update is called once per frame
@@ -45,10 +46,13 @@ public class dynamight : MonoBehaviour
         {
             rot.rotation = Quaternion.Euler(0,0,90);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && kann == 2)
+        if (darf == true)
         {
-            Instantiate(dynamite,transform.position, rot.rotation);
-            kann = 1;
+            if (Input.GetKeyDown(KeyCode.Space) && kann == 2)
+            {
+                Instantiate(dynamite, transform.position, rot.rotation);
+                kann = 1;
+            }
         }
     }
 }
